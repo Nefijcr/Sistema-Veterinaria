@@ -21,39 +21,46 @@ import java.util.List;
 public class Actualizar {
     
     
-    public void actualizarMascota(int rowIndex, String dniCliente, String nombre, String edad, String condicion) {
-        // Leer todas las mascotas desde el archivo
-        List<Mascotas> mascotas = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader("mascotas.txt"))) {
-            String linea;
-            while ((linea = reader.readLine()) != null) {
-                String[] datos = linea.split(",");
-                if (datos.length >= 4) {
-                    Mascotas mascota = new Mascotas(datos[0], datos[1], datos[2], datos[3]);
-                    mascotas.add(mascota);
-                } else {
-                    System.out.println("Error: línea inválida en el archivo mascotas.txt");
-                }
+    public void actualizarMascota(int rowIndex, String dniCliente, String nombre, String edad, String condicion, String sexoSeleccionado) {
+         List<Mascotas> mascotas = new ArrayList<>();
+    try (BufferedReader reader = new BufferedReader(new FileReader("mascotas.txt"))) {
+        String linea;
+        while ((linea = reader.readLine()) != null) {
+            String[] datos = linea.split(",");
+            if (datos.length >= 5) {
+                Mascotas mascota = new Mascotas(datos[0], datos[1], datos[2], datos[3], datos[4]);
+                mascotas.add(mascota);
+            } else {
+                System.out.println("Error: línea inválida en el archivo mascotas.txt");
             }
-        } catch (IOException e) {
-            System.out.println("Error al leer el archivo mascotas.txt: " + e.getMessage());
         }
+    } catch (IOException e) {
+        System.out.println("Error al leer el archivo mascotas.txt: " + e.getMessage());
+    }
 
-        // Actualizar la mascota en la lista
+    // Actualizar la mascota en la lista
+    if (rowIndex >= 0 && rowIndex < mascotas.size()) {
         Mascotas mascota = mascotas.get(rowIndex);
+        mascota.setDniCliente(dniCliente); // Actualizar DNI del cliente
         mascota.setNombre(nombre);
         mascota.setEdad(edad);
         mascota.setCondicion(condicion);
+        mascota.setSexo(sexoSeleccionado); // Actualizar el sexo de la mascota
+    } else {
+        System.out.println("Índice de fila fuera de rango.");
+        return;
+    }
 
-        // Escribir todas las mascotas de nuevo en el archivo
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("mascotas.txt"))) {
-            for (Mascotas m : mascotas) {
-                writer.write(m.getDniCliente() + "," + m.getNombre() + "," + m.getEdad() + "," + m.getCondicion() + "\n");
-            }
-        } catch (IOException e) {
-            System.out.println("Error al escribir en el archivo mascotas.txt: " + e.getMessage());
+    // Escribir todas las mascotas de nuevo en el archivo
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter("mascotas.txt"))) {
+        for (Mascotas m : mascotas) {
+            writer.write(m.getDniCliente() + "," + m.getNombre() + "," + m.getEdad() + "," + m.getCondicion() + "," + m.getSexo() + "\n");
         }
-    } 
+    } catch (IOException e) {
+        System.out.println("Error al escribir en el archivo mascotas.txt: " + e.getMessage());
+    }
+
+    }
      public void actualizarCliente(int rowIndex, String nombre, String celular, String edad, String direccion, String dni) {
     // Leer todos los clientes desde el archivo
     List<Clientes> clientes = new ArrayList<>();

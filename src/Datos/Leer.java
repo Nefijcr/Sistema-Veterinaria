@@ -32,27 +32,27 @@ public class Leer {
         return listaCliente;
     }
 
-   public List<Mascotas> leerMascotas() {
-    List<Mascotas> listaMascotasTemp = new ArrayList<>();
+     public List<Mascotas> leerMascotas() {
+        List<Mascotas> listaMascotasTemp = new ArrayList<>();
 
-    try (BufferedReader reader = new BufferedReader(new FileReader("mascotas.txt"))) {
-        String linea;
-        while ((linea = reader.readLine()) != null) {
-            String[] datos = linea.split(",");
-            
-            // Verificar si hay suficientes elementos en el arreglo
-            if (datos.length >= 4) {
-                Mascotas mascota = new Mascotas(datos[0], datos[1], datos[2], datos[3]);
-                listaMascotasTemp.add(mascota);
-            } else {
-                System.out.println("Error: línea inválida en el archivo mascotas.txt");
+        try (BufferedReader reader = new BufferedReader(new FileReader("mascotas.txt"))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                String[] datos = linea.split(",");
+                
+                // Verificar si hay suficientes elementos en el arreglo
+                if (datos.length >= 5) { // Se ajusta la verificación a 5 elementos debido a la adición del sexo
+                    Mascotas mascota = new Mascotas(datos[0], datos[1], datos[2], datos[3], datos[4]); // Se añade el sexo a la creación de la mascota
+                    listaMascotasTemp.add(mascota);
+                } else {
+                    System.out.println("Error: línea inválida en el archivo mascotas.txt");
+                }
             }
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo mascotas.txt: " + e.getMessage());
         }
-    } catch (IOException e) {
-        System.out.println("Error al leer el archivo mascotas.txt: " + e.getMessage());
-    }
 
-    return listaMascotasTemp;
-}
+        return listaMascotasTemp;
+    }
 
 }

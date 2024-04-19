@@ -49,15 +49,15 @@ public class Eliminar {
         System.out.println("Error al escribir en el archivo clientes.txt: " + e.getMessage());
     }
 } 
-    public void eliminarMascota(int rowIndex, String dniCliente) {
+   public void eliminarMascota(int rowIndex, String dniCliente) {
         // Leer todas las mascotas desde el archivo
         List<Mascotas> mascotas = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader("mascotas.txt"))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
                 String[] datos = linea.split(",");
-                if (datos.length >= 4) {
-                    Mascotas mascota = new Mascotas(datos[0], datos[1], datos[2], datos[3]);
+                if (datos.length >= 5) { // Se ajusta la verificación a 5 elementos debido a la adición del sexo
+                    Mascotas mascota = new Mascotas(datos[0], datos[1], datos[2], datos[3], datos[4]);
                     mascotas.add(mascota);
                 } else {
                     System.out.println("Error: línea inválida en el archivo mascotas.txt");
@@ -73,7 +73,7 @@ public class Eliminar {
         // Escribir todas las mascotas de nuevo en el archivo
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("mascotas.txt"))) {
             for (Mascotas m : mascotas) {
-                writer.write(m.getDniCliente() + "," + m.getNombre() + "," + m.getEdad() + "," + m.getCondicion() + "\n");
+                writer.write(m.getDniCliente() + "," + m.getNombre() + "," + m.getEdad() + "," + m.getCondicion() + "," + m.getSexo() + "\n"); // Se añade el sexo al escribir en el archivo
             }
         } catch (IOException e) {
             System.out.println("Error al escribir en el archivo mascotas.txt: " + e.getMessage());

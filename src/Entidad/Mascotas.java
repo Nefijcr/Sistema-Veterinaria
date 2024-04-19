@@ -1,17 +1,18 @@
-
 package Entidad;
 
 public class Mascotas {
-    String  dniCliente;
+    String dniCliente;
     String nombre;
     String edad;
     String condicion;
+    String sexo; // Nuevo atributo para el sexo de la mascota
 
-    public Mascotas(String dniCliente, String nombre, String edad, String condicion) {
+    public Mascotas(String dniCliente, String nombre, String edad, String condicion, String sexo) {
         this.dniCliente = dniCliente;
         this.nombre = nombre;
         this.edad = edad;
         this.condicion = condicion;
+        this.sexo = sexo; // Inicializar el atributo sexo
     }
 
     public String getDniCliente() {
@@ -46,6 +47,11 @@ public class Mascotas {
         this.condicion = condicion;
     }
 
-    
-    
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
 }

@@ -25,6 +25,7 @@ public class Mascota extends javax.swing.JInternalFrame {
     public Mascota() {
         initComponents();
         tablaDesing();
+        comboSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Macho", "Hembra", "Otro" }));
     }
 
     /**
@@ -52,6 +53,8 @@ public class Mascota extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableMascota = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
+        comboSexo = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
 
         setTitle("Mascotas");
         setToolTipText("");
@@ -148,32 +151,43 @@ public class Mascota extends javax.swing.JInternalFrame {
         jLabel5.setForeground(new java.awt.Color(0, 102, 102));
         jLabel5.setText("REGISTRO DE MASCOTAS");
 
+        comboSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboSexo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboSexoItemStateChanged(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setText("Sexo:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(txtDniCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(txtDniCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                                    .addComponent(txtEdad, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEstado))))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                                .addComponent(txtEdad, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtEstado))
+                            .addComponent(comboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
@@ -209,14 +223,16 @@ public class Mascota extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(13, 13, 13))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
+                            .addComponent(txtEdad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(9, 9, 9)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(35, 35, 35)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -226,6 +242,8 @@ public class Mascota extends javax.swing.JInternalFrame {
                     .addComponent(Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
+
+        comboSexo.getAccessibleContext().setAccessibleName("ff");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -243,22 +261,25 @@ public class Mascota extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        jPanel1.getAccessibleContext().setAccessibleName("");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
         // TODO add your handling code here:
-        ClienteBuscar cliente=new ClienteBuscar();
-        if(cliente.buscarCliente(txtDniCliente.getText())&&validarCamposVacios()&&validarNumeros(txtEdad)&&validarNumeros(txtDniCliente)){
-            Mascotas mascota=new Mascotas(txtDniCliente.getText(), txtNombre.getText(), txtEdad.getText(), txtEstado.getText());
-        Guardar escribir=new Guardar();
-        escribir.registrarMascota(mascota);
-        tablaDesing();
-        limpiarCampos();
-        }else{
+          ClienteBuscar cliente = new ClienteBuscar();
+        if (cliente.buscarCliente(txtDniCliente.getText()) && validarCamposVacios() && validarNumeros(txtEdad) && validarNumeros(txtDniCliente)) {
+            String sexoSeleccionado = (String) comboSexo.getSelectedItem();
+            Mascotas mascota = new Mascotas(txtDniCliente.getText(), txtNombre.getText(), txtEdad.getText(), txtEstado.getText(), sexoSeleccionado);
+            Guardar escribir = new Guardar();
+            escribir.registrarMascota(mascota, sexoSeleccionado);
+            tablaDesing();
+            limpiarCampos();
+        } else {
             JOptionPane.showMessageDialog(null, "Los datos ingresados son incorrectos", "Alerta", JOptionPane.WARNING_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_jButton1MousePressed
 
     private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
@@ -267,19 +288,14 @@ public class Mascota extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2MousePressed
 
     private void txtDniClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniClienteKeyTyped
-        // TODO add your handling code here:
-        int key = evt.getKeyChar();
-
-    boolean numeros = key >= 48 && key <= 57;
-        
-    if (!numeros)
-    {
-        evt.consume();
-    }
-
-    if (txtDniCliente.getText().trim().length() == 8) {
-        evt.consume();
-    }
+       int key = evt.getKeyChar();
+        boolean numeros = key >= 48 && key <= 57;
+        if (!numeros) {
+            evt.consume();
+        }
+        if (txtDniCliente.getText().trim().length() == 8) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtDniClienteKeyTyped
 
     private void txtEdadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEdadKeyTyped
@@ -325,43 +341,34 @@ public class Mascota extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_EliminarMousePressed
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
-        int selectedRow = tableMascota.getSelectedRow();
-        if (selectedRow != -1) { // Si se ha seleccionado una fila
-            // Obtener los datos de la fila seleccionada
-            String dniCliente = tableMascota.getValueAt(selectedRow, 0).toString();
-            String nombre = tableMascota.getValueAt(selectedRow, 1).toString();
-            String edad = tableMascota.getValueAt(selectedRow, 2).toString();
-            String estado = tableMascota.getValueAt(selectedRow, 3).toString();
-
-            // Mostrar una ventana de diálogo para editar los datos
-            String nuevoNombre = JOptionPane.showInputDialog(this, "Nuevo Nombre:", nombre);
-            String nuevaEdad = JOptionPane.showInputDialog(this, "Nueva Edad:", edad);
-            String nuevoEstado = JOptionPane.showInputDialog(this, "Nuevo Estado:", estado);
-
-            // Actualizar los datos en la lista y en el archivo
-            if (nuevoNombre != null && nuevaEdad != null && nuevoEstado != null) {
-                modelMascotas.setValueAt(nuevoNombre, selectedRow, 1);
-                modelMascotas.setValueAt(nuevaEdad, selectedRow, 2);
-                modelMascotas.setValueAt(nuevoEstado, selectedRow, 3);
-
-                // Guardar los cambios en el archivo
-                Actualizar actualizar = new Actualizar();
-                actualizar.actualizarMascota(selectedRow, dniCliente, nuevoNombre, nuevaEdad, nuevoEstado);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Seleccione una fila para modificar.", "Alerta", JOptionPane.WARNING_MESSAGE);
-        }
-                                                 
-
+    int selectedRow = tableMascota.getSelectedRow();
+       if (selectedRow != -1) {
+    String dniCliente = tableMascota.getValueAt(selectedRow, 0).toString();
+    String nombre = tableMascota.getValueAt(selectedRow, 1).toString();
+    String edad = tableMascota.getValueAt(selectedRow, 2).toString();
+    String estado = tableMascota.getValueAt(selectedRow, 3).toString();
+    String nuevoNombre = JOptionPane.showInputDialog(this, "Nuevo Nombre:", nombre);
+    String nuevaEdad = JOptionPane.showInputDialog(this, "Nueva Edad:", edad);
+    String nuevoEstado = JOptionPane.showInputDialog(this, "Nuevo Estado:", estado);
+    String nuevoSexo = (String) comboSexo.getSelectedItem();
+    if (nuevoNombre != null && nuevaEdad != null && nuevoEstado != null) {
+        // Modificar los índices de las columnas en función de la nueva estructura de la tabla
+        modelMascotas.setValueAt(nuevoNombre, selectedRow, 1);
+        modelMascotas.setValueAt(nuevaEdad, selectedRow, 2);
+        modelMascotas.setValueAt(nuevoEstado, selectedRow, 3);
+        modelMascotas.setValueAt(nuevoSexo, selectedRow, 4); // Se añadió la columna del sexo
+        Actualizar actualizar = new Actualizar();
+        actualizar.actualizarMascota(selectedRow, dniCliente, nuevoNombre, nuevaEdad, nuevoEstado, nuevoSexo);
+    }
+} else {
+    JOptionPane.showMessageDialog(this, "Seleccione una fila para modificar.", "Alerta", JOptionPane.WARNING_MESSAGE);
+} 
     }//GEN-LAST:event_ModificarActionPerformed
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
-       int selectedRow = tableMascota.getSelectedRow();
-        if (selectedRow != -1) { // Si se ha seleccionado una fila
-            // Obtener el DNI del cliente de la fila seleccionada
+         int selectedRow = tableMascota.getSelectedRow();
+        if (selectedRow != -1) {
             String dniCliente = tableMascota.getValueAt(selectedRow, 0).toString();
-
-            // Eliminar la fila de la tabla y guardar los cambios en el archivo
             modelMascotas.removeRow(selectedRow);
             Eliminar eliminar = new Eliminar();
             eliminar.eliminarMascota(selectedRow, dniCliente);
@@ -371,18 +378,27 @@ public class Mascota extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_EliminarActionPerformed
 
+    private void comboSexoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSexoItemStateChanged
+        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+            String sexoSeleccionado = (String) comboSexo.getSelectedItem();
+            System.out.println("Sexo seleccionado: " + sexoSeleccionado);
+        }
+     // TODO add your handling code here:
+    }//GEN-LAST:event_comboSexoItemStateChanged
+
     private void tablaDesing(){
-        modelMascotas = new DefaultTableModel(new Object[]{"DNI - Dueño", "Nombre", "Edad ", "Estado"}, 0);
-        tableMascota.setModel(modelMascotas);
-        cargarDatos();     
+      modelMascotas = new DefaultTableModel(0, 5); // 5 es el número de columnas
+    // Establecer los nombres de las columnas en el modelo de la tabla
+    modelMascotas.setColumnIdentifiers(new Object[]{"DNI - Dueño", "Nombre", "Edad", "Estado", "Sexo"}); 
+    tableMascota.setModel(modelMascotas);
+    cargarDatos();  
     }
     private void cargarDatos() {
-        Leer leer=new Leer();
-        ClienteBuscar cliente=new ClienteBuscar();
+        Leer leer = new Leer();
+        ClienteBuscar cliente = new ClienteBuscar();
         List<Mascotas> listaMascotas = leer.leerMascotas();
-       
         for (Mascotas mascota : listaMascotas) {
-            modelMascotas.addRow(new Object[]{cliente.buscarNombreCliente(mascota.getDniCliente()), mascota.getNombre(), mascota.getEdad(), mascota.getCondicion()});
+            modelMascotas.addRow(new Object[]{cliente.buscarNombreCliente(mascota.getDniCliente()), mascota.getNombre(), mascota.getEdad(), mascota.getCondicion(), mascota.getSexo()}); // Se añadió la columna del sexo
         }
     }
     private void limpiarCampos(){
@@ -425,6 +441,7 @@ public class Mascota extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Eliminar;
     private javax.swing.JButton Modificar;
+    private javax.swing.JComboBox<String> comboSexo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -432,6 +449,7 @@ public class Mascota extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tableMascota;

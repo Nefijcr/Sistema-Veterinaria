@@ -24,13 +24,12 @@ public class Guardar {
         System.out.println("Error al intentar escribir en el archivo " + rutaArchivo);
     }
 }
-    public void registrarMascota(Mascotas mascota) {
-        // Ruta del archivo donde se guardarán los registros
+   public void registrarMascota(Mascotas mascota, String sexoSeleccionado) {
         String rutaArchivo = "mascotas.txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo, true))) {
-            // Escribir los datos en el archivo separados por comas
-            writer.write(mascota.getDniCliente() + "," + mascota.getNombre() + "," + mascota.getEdad() + "," + mascota.getCondicion() + "\n");
+            // Escribir los datos en el archivo separados por comas, incluyendo el sexo
+            writer.write(mascota.getDniCliente() + "," + mascota.getNombre() + "," + mascota.getEdad() + "," + mascota.getCondicion() + "," + sexoSeleccionado + "\n");
 
             System.out.println("Registro guardado en " + rutaArchivo);
         } catch (IOException e) {
@@ -38,10 +37,5 @@ public class Guardar {
         }
     }
    
-
-    
-
-
-    
-    
+   
 }
