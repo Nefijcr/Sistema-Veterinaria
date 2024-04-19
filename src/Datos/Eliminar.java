@@ -73,7 +73,7 @@ public class Eliminar {
         // Escribir todas las mascotas de nuevo en el archivo
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("mascotas.txt"))) {
             for (Mascotas m : mascotas) {
-                writer.write(m.getDniCliente() + "," + m.getNombre() + "," + m.getEdad() + "," + m.getCondicion() + "," + m.getSexo() + "\n"); // Se añade el sexo al escribir en el archivo
+                writer.write(m.getDniCliente() + "," + m.getNombre() + "," + m.getEdad() + "," + m.getEstado() + "," + m.getSexo() + "\n"); // Se añade el sexo al escribir en el archivo
             }
         } catch (IOException e) {
             System.out.println("Error al escribir en el archivo mascotas.txt: " + e.getMessage());

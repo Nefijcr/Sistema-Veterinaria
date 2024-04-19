@@ -54,7 +54,7 @@ public class Actualizar {
     // Escribir todas las mascotas de nuevo en el archivo
     try (BufferedWriter writer = new BufferedWriter(new FileWriter("mascotas.txt"))) {
         for (Mascotas m : mascotas) {
-            writer.write(m.getDniCliente() + "," + m.getNombre() + "," + m.getEdad() + "," + m.getCondicion() + "," + m.getSexo() + "\n");
+            writer.write(m.getDniCliente() + "," + m.getNombre() + "," + m.getEdad() + "," + m.getEstado() + "," + m.getSexo() + "\n");
         }
     } catch (IOException e) {
         System.out.println("Error al escribir en el archivo mascotas.txt: " + e.getMessage());

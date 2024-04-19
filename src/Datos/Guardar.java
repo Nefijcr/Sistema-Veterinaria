@@ -29,7 +29,7 @@ public class Guardar {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo, true))) {
             // Escribir los datos en el archivo separados por comas, incluyendo el sexo
-            writer.write(mascota.getDniCliente() + "," + mascota.getNombre() + "," + mascota.getEdad() + "," + mascota.getCondicion() + "," + sexoSeleccionado + "\n");
+            writer.write(mascota.getDniCliente() + "," + mascota.getNombre() + "," + mascota.getEdad() + "," + mascota.getEstado() + "," + sexoSeleccionado + "\n");
 
             System.out.println("Registro guardado en " + rutaArchivo);
         } catch (IOException e) {

@@ -398,7 +398,7 @@ public class Mascota extends javax.swing.JInternalFrame {
         ClienteBuscar cliente = new ClienteBuscar();
         List<Mascotas> listaMascotas = leer.leerMascotas();
         for (Mascotas mascota : listaMascotas) {
-            modelMascotas.addRow(new Object[]{cliente.buscarNombreCliente(mascota.getDniCliente()), mascota.getNombre(), mascota.getEdad(), mascota.getCondicion(), mascota.getSexo()}); // Se añadió la columna del sexo
+            modelMascotas.addRow(new Object[]{cliente.buscarNombreCliente(mascota.getDniCliente()), mascota.getNombre(), mascota.getEdad(), mascota.getEstado(), mascota.getSexo()}); // Se añadió la columna del sexo
         }
     }
     private void limpiarCampos(){

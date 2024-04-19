@@ -4,14 +4,14 @@ public class Mascotas {
     String dniCliente;
     String nombre;
     String edad;
-    String condicion;
+    String estado;
     String sexo; // Nuevo atributo para el sexo de la mascota
 
-    public Mascotas(String dniCliente, String nombre, String edad, String condicion, String sexo) {
+    public Mascotas(String dniCliente, String nombre, String edad, String estado, String sexo) {
         this.dniCliente = dniCliente;
         this.nombre = nombre;
         this.edad = edad;
-        this.condicion = condicion;
+        this.estado = estado;
         this.sexo = sexo; // Inicializar el atributo sexo
     }
 
@@ -39,12 +39,12 @@ public class Mascotas {
         this.edad = edad;
     }
 
-    public String getCondicion() {
-        return condicion;
+    public String getEstado() {
+        return estado;
     }
 
     public void setCondicion(String condicion) {
-        this.condicion = condicion;
+        this.estado = condicion;
     }
 
     public String getSexo() {
